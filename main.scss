@@ -1,0 +1,228 @@
+@import "./sassSave/base/base";
+@import "./sassSave/abstracts/var";
+@import "./sassSave/abstracts/mixin";
+body {
+    font-family: $font-main;
+    background-color: $background-main;
+    @include centerFlex(center);
+    height: 100vh;
+}
+img {
+    width: 100%;
+}
+.container {
+    @include size(90%, 90vh);
+    position: relative;
+    // border: 1px solid red;
+    padding: 10px 40px;
+    background-image: $background-image;
+    overflow: hidden;
+    .header {
+        display: flex;
+        gap: 20px;
+        h2 {
+            font-size: 40px;
+            color: $color-one;
+        }
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        li {
+            list-style: none;
+            color: $color-one;
+            position: relative;
+            cursor: pointer;
+        }
+        li::after {
+            content: "";
+            position: absolute;
+            bottom: -30%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.5s;
+        }
+        li:hover::after {
+            width: 100%;
+        }
+    }
+    #slide {
+        margin-top: 40px;
+
+        .item {
+            .content {
+                display: flex;
+                gap: 30px;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                z-index: 1111;
+
+                h1 {
+                    color: $color-one;
+                    font-weight: 500;
+                }
+                .des {
+                    margin: 20px 0;
+                    color: $color-gray;
+                }
+                .more {
+                    width: 150px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    border-radius: 8px;
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: #ffffff80;
+                    text-shadow: none;
+                    background: transparent;
+                    box-shadow: transparent;
+                    border: 1px solid #ffffff80;
+                    transition: 0.5s ease;
+                    user-select: none;
+                    cursor: pointer;
+                }
+                .more:hover,
+                :focus {
+                    color: #ffffff;
+                    background: #ff8c006e;
+                    // border: 1px solid #008cff;
+                    // text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+                    box-shadow: 0 0 10px #ff9500ae, 0 0 20px #ffa200b5, 0 0 30px #ff950087, 0 0 40px #ff8400a0;
+                }
+                .right {
+                    color: $color-one;
+
+                    h2 {
+                        margin-bottom: 20px;
+                        font-size: 20px;
+                        font-weight: 400;
+                        font-family: $font-main;
+                    }
+                    h3 {
+                        margin-bottom: 20px;
+                        font-size: 18px;
+                        font-weight: 400;
+                        font-family: $font-main;
+                    }
+                    ul {
+                        list-style: none;
+                        font-family: $font-main;
+                    }
+                    li {
+                        line-height: 30px;
+                    }
+                    li p {
+                        position: relative;
+                    }
+                    span {
+                        color: $color-gray;
+                    }
+                    b {
+                        font-family: $font-main;
+                        font-weight: 500;
+                    }
+                    @keyframes light {
+                        0% {
+                            box-shadow: 0 0 10px #8c0781;
+                        }
+                        100% {
+                            box-shadow: 0 0 10px #ff00ea;
+                        }
+                    }
+                    li p::before {
+                        position: absolute;
+                        content: "";
+                        width: 10px;
+                        height: 10px;
+                        background-color: $color-position;
+                        border-radius: 50%;
+                        top: 50%;
+                        left: -20%;
+                        transform: translateY(-30%);
+                        animation: light 1s ease-in-out infinite alternate;
+                    }
+                }
+            }
+            .image {
+                // overflow: hidden;
+                width: 65%;
+                margin: auto;
+                transition: 0.5s;
+                cursor: pointer;
+                right: 20%;
+                // border: 1px solid red;
+                position: absolute;
+                bottom: 10%;
+                z-index: 1;
+                // transform: translateX(50%);
+                img {
+                    transition: 0.5s;
+                }
+                img:hover {
+                    transform: scale(1.1);
+                }
+            }
+            @keyframes slide {
+                0% {
+                    right: -70%;
+                    filter: blur(10px);
+                }
+                100% {
+                    right: 20%;
+
+                    // transform: translateX(-30%);
+                }
+            }
+            @keyframes scale {
+                0% {
+                    right: 20%;
+                }
+                100% {
+                    right: -80%;
+
+                    filter: blur(50px);
+                }
+            }
+            .image.active {
+                animation: slide 2s forwards;
+            }
+            .image.active1 {
+                animation: scale 2.5s forwards;
+            }
+        }
+    }
+    .directional {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        .button {
+            display: flex;
+            gap: 20px;
+            .btnSlide {
+                width: 30px;
+                height: 30px;
+                line-height: 20px;
+                border-radius: 50%;
+                font-size: 15px;
+                cursor: pointer;
+                background-color: rgba(188, 188, 188, 0.534);
+                border: none;
+                transition: 0.5s;
+            }
+            .btnSlide:hover {
+                background-color: $color-one;
+            }
+        }
+    }
+}

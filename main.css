@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui;
+  background-color: #3a0e6a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  width: 90%;
+  height: 90vh;
+  position: relative;
+  padding: 10px 40px;
+  background-image: radial-gradient(#320643, #140534);
+  overflow: hidden;
+}
+.container .header {
+  display: flex;
+  gap: 20px;
+}
+.container .header h2 {
+  font-size: 40px;
+  color: white;
+}
+.container .header ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.container .header li {
+  list-style: none;
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
+.container .header li::after {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+.container .header li:hover::after {
+  width: 100%;
+}
+.container #slide {
+  margin-top: 40px;
+}
+.container #slide .item .content {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1111;
+}
+.container #slide .item .content h1 {
+  color: white;
+  font-weight: 500;
+}
+.container #slide .item .content .des {
+  margin: 20px 0;
+  color: rgb(204, 204, 204);
+}
+.container #slide .item .content .more {
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5019607843);
+  text-shadow: none;
+  background: transparent;
+  box-shadow: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5019607843);
+  transition: 0.5s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.container #slide .item .content .more:hover,
+.container #slide .item .content :focus {
+  color: #ffffff;
+  background: rgba(255, 140, 0, 0.431372549);
+  box-shadow: 0 0 10px rgba(255, 149, 0, 0.6823529412), 0 0 20px rgba(255, 162, 0, 0.7098039216), 0 0 30px rgba(255, 149, 0, 0.5294117647), 0 0 40px rgba(255, 132, 0, 0.6274509804);
+}
+.container #slide .item .content .right {
+  color: white;
+}
+.container #slide .item .content .right h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: system-ui;
+}
+.container #slide .item .content .right h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: system-ui;
+}
+.container #slide .item .content .right ul {
+  list-style: none;
+  font-family: system-ui;
+}
+.container #slide .item .content .right li {
+  line-height: 30px;
+}
+.container #slide .item .content .right li p {
+  position: relative;
+}
+.container #slide .item .content .right span {
+  color: rgb(204, 204, 204);
+}
+.container #slide .item .content .right b {
+  font-family: system-ui;
+  font-weight: 500;
+}
+@keyframes light {
+  0% {
+    box-shadow: 0 0 10px #8c0781;
+  }
+  100% {
+    box-shadow: 0 0 10px #ff00ea;
+  }
+}
+.container #slide .item .content .right li p::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #8c0781;
+  border-radius: 50%;
+  top: 50%;
+  left: -20%;
+  transform: translateY(-30%);
+  animation: light 1s ease-in-out infinite alternate;
+}
+.container #slide .item .image {
+  width: 65%;
+  margin: auto;
+  transition: 0.5s;
+  cursor: pointer;
+  right: 20%;
+  position: absolute;
+  bottom: 10%;
+  z-index: 1;
+}
+.container #slide .item .image img {
+  transition: 0.5s;
+}
+.container #slide .item .image img:hover {
+  transform: scale(1.1);
+}
+@keyframes slide {
+  0% {
+    right: -70%;
+    filter: blur(10px);
+  }
+  100% {
+    right: 20%;
+  }
+}
+@keyframes scale {
+  0% {
+    right: 20%;
+  }
+  100% {
+    right: -80%;
+    filter: blur(50px);
+  }
+}
+.container #slide .item .image.active {
+  animation: slide 2s forwards;
+}
+.container #slide .item .image.active1 {
+  animation: scale 2.5s forwards;
+}
+.container .directional {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container .directional .button {
+  display: flex;
+  gap: 20px;
+}
+.container .directional .button .btnSlide {
+  width: 30px;
+  height: 30px;
+  line-height: 20px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: rgba(188, 188, 188, 0.534);
+  border: none;
+  transition: 0.5s;
+}
+.container .directional .button .btnSlide:hover {
+  background-color: white;
+}/*# sourceMappingURL=main.css.map */
